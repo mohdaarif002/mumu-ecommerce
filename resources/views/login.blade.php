@@ -1,7 +1,10 @@
 @extends('master_layout')
 
 @section('content')
-{{$errors->first('email')}}
+@if($errors->any())
+    <!-- {{ implode('', $errors->all()) }} -->
+@endif
+
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

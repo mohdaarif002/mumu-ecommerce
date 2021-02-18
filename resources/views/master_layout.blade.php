@@ -46,7 +46,7 @@ let err_msg="";
 //             @foreach ($errors->all() as $error)
 //                 alert({{ $error }});
 //             @endforeach
-//             {{ Session::put('message',err_msg) }}          
+//                   
 // @endif
 
 
@@ -58,11 +58,9 @@ let err_msg="";
   }
  
 
-
  if(type=="warning"){
   		toastr.warning("{{ Session::get('message') }}");
  }
-  
 
 
  if(type=="error"){

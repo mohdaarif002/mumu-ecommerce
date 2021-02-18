@@ -1,6 +1,15 @@
 @extends('master_layout')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <h3 style="text-align:center;">Sign Up Page</h3>
 <form method='POST' action='signUP'>
 

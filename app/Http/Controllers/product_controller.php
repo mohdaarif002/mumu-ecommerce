@@ -171,4 +171,11 @@ class product_controller extends Controller
 
 
      }
+
+     public function buyNow(Request $req){
+             
+        $total= DB::table('products')->find($req->input('product_id'));
+
+       return view('order',['total'=>$total->price]); 
+     }
 }
