@@ -86,10 +86,10 @@ class product_controller extends Controller
      public function cartList(){
 
 
-      $list= DB::table('Cart')
-              ->join('products','Cart.product_id','products.id')
-              ->select('products.*','Cart.id as cartId')
-              ->where('Cart.user_id',Session::get('user')->id)
+      $list= DB::table('cart')
+              ->join('products','cart.product_id','products.id')
+              ->select('products.*','cart.id as cartId')
+              ->where('cart.user_id',Session::get('user')->id)
               ->get();
             
 // return count($list);
@@ -110,9 +110,9 @@ class product_controller extends Controller
      }
 
      public function orderNow(){
-        $total= DB::table('Cart')
-        ->join('products','Cart.product_id','products.id')
-        ->where('Cart.user_id',Session::get('user')->id)
+        $total= DB::table('cart')
+        ->join('products','cart.product_id','products.id')
+        ->where('cart.user_id',Session::get('user')->id)
         ->sum('products.price');
 
 

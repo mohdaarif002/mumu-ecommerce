@@ -1,5 +1,5 @@
 .content{
-    width:80%;
+    /* width:80%; */
     margin:auto;
 }
 
@@ -57,9 +57,9 @@
     color: lightcoral;
 }
 
-.carousel-inner {
+/* .carousel-inner {
     height: 500px  !important;
-}
+} */
 .detail-btn{
     padding:6px;
 }
