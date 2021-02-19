@@ -2,6 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/codewith/public_html/
- #   - /bin/cp -r * $DEPLOYPATH #copy all from root
-#    - /bin/cp -r ./public/* $DEPLOYPATH/public_html/
     - /bin/cp -r ./public/* $DEPLOYPATH
