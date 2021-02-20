@@ -1,5 +1,7 @@
 @extends('master_layout')
 
+
+
 @section('content')
 
 <h3>Cart Items</h3>
