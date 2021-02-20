@@ -2,5 +2,6 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/codewith/public_html/
-    - /bin/cp -r ./mumu-ecommerce/public/* $DEPLOYPATH
+    - /bin/cp -r ./public/* $DEPLOYPATH
+
 
