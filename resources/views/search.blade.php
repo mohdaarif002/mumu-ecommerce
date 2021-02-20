@@ -3,7 +3,7 @@
 @section('content')
 
 
-<h3>Search Results</h3>
+<h3 class="headingClass">Search Results</h3>
 
 <div class=" container product-card">
     <div class="row">

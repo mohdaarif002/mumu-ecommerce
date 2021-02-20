@@ -43,7 +43,7 @@
     </button>
 </div>
 </div>
-<h3>Trending Products</h3>
+<h3 class="headingClass">Trending Products</h3>
 
 <div class=" container product-card">
   <div class="row">
