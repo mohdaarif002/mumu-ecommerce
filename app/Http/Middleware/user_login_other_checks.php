@@ -19,7 +19,7 @@ class user_login_other_checks
         if($request->session()->has('user') ){
            //do nothing
         }else{
-            return redirect('/');
+            return redirect('/login');
         }
 
         return $next($request);

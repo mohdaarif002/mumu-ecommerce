@@ -42,6 +42,13 @@ class product_controller extends Controller
             $cart_item->product_id=$req->input('product_id');
             $cart_item->save();
 
+            $notification=[
+                'alert-type'=>'success',
+                'message'=>'Item is added to cart successfully.'
+            ];
+            // $req->session()->put($notification);
+            return redirect('/')->with($notification);
+
             return redirect('/');
 
         }else{

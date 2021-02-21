@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>My Orders</h3>
+<h3 class="headingClass">My Orders</h3>
 <?php
 $imageURL='img-url';
 ?>
