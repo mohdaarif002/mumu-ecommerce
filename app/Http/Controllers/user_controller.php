@@ -91,9 +91,9 @@ class user_controller extends Controller
         ]);
        
 
-        // $validator = Validator::make($req->all(), [ 'email' => 'required|email', 'password' => 'required',
-        //                                      'name'=>'required'
-        // ]);
+        $validator = Validator::make($req->all(), [ 'email' => 'required|email', 'password' => 'required',
+                                             'name'=>'required'
+        ]);
         
         if($validator->fails()) {
             // $err=$validator->errors();
