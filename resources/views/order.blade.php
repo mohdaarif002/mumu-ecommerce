@@ -38,6 +38,7 @@
              <div class="row"> 
 
                <form method="POST" action='/order-place'> 
+               <input type="hidden" name="ProductId" value={{$ProductId?$ProductId:''}}>
                @csrf      
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Delivery Address</label>

@@ -142,6 +142,7 @@ Session::forget(['alert-type', 'message']);
      }
 
      public function orderPlace(Request $req){
+        //  return $req->all();
 
         // return $req->input();
 
@@ -152,12 +153,13 @@ Session::forget(['alert-type', 'message']);
             
         ]);
       
+        $user=Session::get('user');
          $userId=Session::get('user')->id;
         // return $req->input();
         $carts=Cart::where('user_id','=', $userId)->get();
 
         // return $carts;
-
+if(empty($req->input('ProductId'))){
         foreach($carts as $cart){
 
             $order= new Order;
@@ -178,6 +180,26 @@ Session::forget(['alert-type', 'message']);
 
         }
         Cart::where('user_id','=', $userId)->delete();
+
+    }else{
+        $order= new Order;
+            $order->user_id =$user->id;
+            $order->product_id =$req->input('ProductId');
+            $order->status ='pending';//or placed
+            $order->paymentAddress =$req->deliveryAddress;
+            $order->paymentOption =$req->paymentOption;
+            if($req->paymentOption=='online'){
+                
+                $order->paymentStatus ='paid';  // because COD
+            }else{
+                $order->paymentStatus ='pending';  // because COD
+            }
+           
+           
+            $order->save();
+
+
+    }   
 
         // $notification=[
         //     'alert-type'=>'success',
@@ -207,9 +229,15 @@ Session::forget(['alert-type', 'message']);
      }
 
      public function buyNow(Request $req){
+        
+        
+        $ProductId=$req->input('product_id');
+        // return $ProductId;
              
         $total= DB::table('products')->find($req->input('product_id'));
 
-       return view('order',['total'=>$total->price]); 
+       return view('order',['total'=>$total->price,
+                            'ProductId'=>$ProductId
+                           ]); 
      }
 }
