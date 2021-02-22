@@ -89,7 +89,7 @@ class user_controller extends Controller
     public function signup(Request $req){
         $req->validate([
             'name'=>'required',
-            'email' => 'required|email|min:5',
+            'email' => 'required|email|min:5|unique:users',
             'password' => 'required',
         ]);
        
