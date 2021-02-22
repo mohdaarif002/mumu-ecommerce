@@ -113,7 +113,8 @@ Session::forget(['alert-type', 'message']);
 
              return view('cart_list',['products'=>$list]); 
      }
-     public function removeProduct($cartId){
+
+     public function removeProduct(Request $request, $cartId){
        
           Cart::destroy($cartId);
         //   $notification=[
