@@ -143,6 +143,7 @@ Session::forget(['alert-type', 'message']);
 
      public function orderPlace(Request $req){
 
+        // return $req->input();
 
         $req->validate([
             'paymentOption' => 'required',
@@ -150,7 +151,7 @@ Session::forget(['alert-type', 'message']);
            
             
         ]);
-
+      
          $userId=Session::get('user')->id;
         // return $req->input();
         $carts=Cart::where('user_id','=', $userId)->get();
@@ -184,8 +185,8 @@ Session::forget(['alert-type', 'message']);
         // ];
         // $req->session()->put($notification);
 
-            $request->session()->flash('alert-type','success');
-            $request->session()->flash( 'message','Your order placed successfully.');
+            $req->session()->flash('alert-type','success');
+            $req->session()->flash( 'message','Your order placed successfully.');
 
         
         return redirect('/');

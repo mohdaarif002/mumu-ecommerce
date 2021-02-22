@@ -23,8 +23,7 @@
           </div>
             
             <div class="col-6">
-              <form action="/buy-now" method='POST'>
-                @csrf
+              <form action="/buy-now" method='GET'>
                 <input type="hidden" name="product_id" value='{{$product['id']}}' id="">
             
                 <button class="btn btn-success detail-btn">Buy Now</button>

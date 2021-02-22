@@ -37,7 +37,7 @@
              </div>
              <div class="row"> 
 
-               <form method='POST' action='/order-place'> 
+               <form method="POST" action='/order-place'> 
                @csrf      
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Delivery Address</label>

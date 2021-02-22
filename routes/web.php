@@ -44,7 +44,8 @@ Route::get('/remove-product/{cartId}',[product_controller::class,'removeProduct'
 Route::get('/order-now',[product_controller::class,'orderNow']);
 
 
-Route::post('/order-place',[product_controller::class,'orderPlace']);
+
+
 
 
 
@@ -55,6 +56,7 @@ Route::group(['middleware'=>['user_login_other_checks']],function(){
     
 Route::get('/cart-list',[product_controller::class,'cartList']);
 Route::get('/my-order',[product_controller::class,'myOrder']);
-Route::post('/buy-now',[product_controller::class,'buyNow']);
+Route::get('/buy-now',[product_controller::class,'buyNow']);
+Route::post('/order-place',[product_controller::class,'orderPlace']);
 
 });
