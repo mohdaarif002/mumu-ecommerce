@@ -1,6 +1,15 @@
 @extends('master_layout')
 
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div class="container">
 
             <div class="row">
@@ -31,13 +40,14 @@
                <form method='POST' action='/order-place'> 
                @csrf      
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Payment Address</label>
-                            <textarea class="form-control" name="paymentAddress" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <label for="exampleFormControlTextarea1">Delivery Address</label>
+                            <textarea class="form-control" name="deliveryAddress" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>            
                        
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Payment Options</label>
                             <select class="form-control" name="paymentOption" id="exampleFormControlSelect1">
+                            <option value=''>Payment options</option>
                             <option value='cod'>Cash on delivery</option>
                             <option value='online'>Online</option>
                             </select>

@@ -35,6 +35,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 <script>
+
 let type="{{Session::get('alert-type')}}";
 let err_msg="";
 
@@ -66,8 +67,9 @@ let err_msg="";
  if(type=="error"){
   		toastr.error("{{ Session::get('message') }}");
  }
- {{Session::forget(['alert-type', 'message'])}}
-    
+type="";
+  
    </script>
+   <!-- {{Session::forget(['alert-type', 'message'])}}  -->
 </body>
 </html>

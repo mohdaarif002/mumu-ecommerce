@@ -17,6 +17,7 @@ class product_controller extends Controller
      
         $products=product_model::all();
         // return  $req->session()->all();
+        // Session::forget(['alert-type', 'message']); 
 // return $products;
         return view('product',['products'=> $products ]);
     }
@@ -42,12 +43,15 @@ class product_controller extends Controller
             $cart_item->product_id=$req->input('product_id');
             $cart_item->save();
 
-            $notification=[
-                'alert-type'=>'success',
-                'message'=>'Item is added to cart successfully.'
-            ];
+            // $notification=[
+            //     'alert-type'=>'success',
+            //     'message'=>'Item is added to cart successfully.'
+            // ];
+
             // $req->session()->put($notification);
-            return redirect('/')->with($notification);
+
+            $req->session()->flash('alert-type','success');
+            $req->session()->flash( 'message','Item is added to cart successfully.');
 
             return redirect('/');
 
@@ -76,11 +80,14 @@ class product_controller extends Controller
             //   Session::forget('user');
               $request->session()->pull('user');
 
-              $notification=[
-                'alert-type'=>'success',
-                'message'=>'You have successfully Logged Out.'
-            ];
-            $request->session()->put($notification);
+            //   $notification=[
+            //     'alert-type'=>'success',
+            //     'message'=>'You have successfully Logged Out.'
+            // ];
+            // $request->session()->put($notification);
+
+            $request->session()->flash('alert-type','success');
+            $request->session()->flash( 'message','You have successfully Logged Out.');
             
             
             return redirect('/'); //stored in session as key=value
@@ -90,8 +97,8 @@ class product_controller extends Controller
 
      }
 
-     public function cartList(){
-
+     public function cartList(Request $req){
+        // return $req->session()->all();
 
       $list= DB::table('cart')
               ->join('products','cart.product_id','products.id')
@@ -100,17 +107,23 @@ class product_controller extends Controller
               ->get();
             
 // return count($list);
+Session::forget(['alert-type', 'message']);
+
+// return $req->session()->all();
 
              return view('cart_list',['products'=>$list]); 
      }
      public function removeProduct($cartId){
        
           Cart::destroy($cartId);
-          $notification=[
-            'alert-type'=>'error',
-            'message'=>'Your cart Item is removed.'
-        ];
-        Session::put($notification);
+        //   $notification=[
+        //     'alert-type'=>'error',
+        //     'message'=>'Your cart Item is removed.'
+        // ];
+        // Session::put($notification);
+
+            $request->session()->flash('alert-type','error');
+            $request->session()->flash( 'message','Your cart Item is removed.');
         
           return redirect('/cart-list');
 
@@ -128,6 +141,15 @@ class product_controller extends Controller
      }
 
      public function orderPlace(Request $req){
+
+
+        $req->validate([
+            'paymentOption' => 'required',
+            'deliveryAddress' => 'required',
+           
+            
+        ]);
+
          $userId=Session::get('user')->id;
         // return $req->input();
         $carts=Cart::where('user_id','=', $userId)->get();
@@ -140,7 +162,7 @@ class product_controller extends Controller
             $order->user_id =$cart['user_id'];
             $order->product_id =$cart['product_id'];
             $order->status ='pending';//or placed
-            $order->paymentAddress =$req->paymentAddress;
+            $order->paymentAddress =$req->deliveryAddress;
             $order->paymentOption =$req->paymentOption;
             if($req->paymentOption=='online'){
                 
@@ -155,11 +177,14 @@ class product_controller extends Controller
         }
         Cart::where('user_id','=', $userId)->delete();
 
-        $notification=[
-            'alert-type'=>'success',
-            'message'=>'Your order placed successfully.'
-        ];
-        $req->session()->put($notification);
+        // $notification=[
+        //     'alert-type'=>'success',
+        //     'message'=>'Your order placed successfully.'
+        // ];
+        // $req->session()->put($notification);
+
+            $request->session()->flash('alert-type','success');
+            $request->session()->flash( 'message','Your order placed successfully.');
 
         
         return redirect('/');

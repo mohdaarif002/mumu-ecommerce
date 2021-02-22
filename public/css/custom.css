@@ -1,6 +1,15 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Fjalla One', sans-serif;
+
+}
+
+
 .content{
     /* width:80%; */
     margin:auto;
+    margin-bottom: 9vh;
 }
 
 .product-card{
@@ -56,7 +65,8 @@
 .col-sm-3.inner-card p {
     font: -webkit-small-control;
     font-family: 'Fjalla One', sans-serif;
-    color: lightcoral;
+    color: steelblue;
+    font-weight: 600;
 }
 
 /* .carousel-inner {
@@ -100,4 +110,7 @@
   .block:hover {
     background-color: rgb(196, 48, 48);
     color: black;
+  }
+  .card-body h4{
+      font-size: 2.5vw;
   }

@@ -24,6 +24,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
 
         \App\Http\Middleware\user_login_check::class,
+        \App\Http\Middleware\RevalidateBackHistory::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
       
     ];

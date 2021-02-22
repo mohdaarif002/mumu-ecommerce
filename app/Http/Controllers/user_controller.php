@@ -65,7 +65,10 @@ class user_controller extends Controller
 
             // $req->session()->flash('alert-type','success');
             // $req->session()->flash('message','You have successfully Logged In.');
-            $req->session()->put($notification);
+            // $req->session()->put($notification);
+
+            $req->session()->flash('alert-type','success');
+            $req->session()->flash( 'message','You have successfully Logged In.');
 
             // return  $req->session()->all();
             // return redirect('/')->with('type','success'); //stored in session as key=value
@@ -116,11 +119,13 @@ class user_controller extends Controller
         $user->password=Hash::make($req->input('password'));
         $user->save();
 
-        $notification=[
-            'alert-type'=>'success',
-            'message'=>'You have successfully Signed up.'
-        ];
-        $req->session()->put($notification);
+        // $notification=[
+        //     'alert-type'=>'success',
+        //     'message'=>'You have successfully Signed up.'
+        // ];
+        // $req->session()->put($notification);
+            $req->session()->flash('alert-type','success');
+            $req->session()->flash( 'message','You have successfully Signed up.');
       return redirect('/');
 
     }
