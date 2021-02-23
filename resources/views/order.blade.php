@@ -10,6 +10,11 @@
         </ul>
     </div>
 @endif
+@if(isset($ProductId))
+    
+@else
+    {{$ProductId=""}}
+@endif
 <div class="container">
 
             <div class="row">
@@ -38,7 +43,7 @@
              <div class="row"> 
 
                <form method="POST" action='/order-place'> 
-               <input type="hidden" name="ProductId" value={{$ProductId?$ProductId:''}}>
+               <input type="hidden" name="ProductId" value={{$ProductId}}>
                @csrf      
                         <div class="form-group">
                             <label for="exampleFormControlTextarea1">Delivery Address</label>
