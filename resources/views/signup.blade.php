@@ -14,7 +14,7 @@
   <div class="row formWrapper">
       <div class="col-sm-6 col-md-4">
                 <h3 class="headingClass">Sign Up Page</h3>
-                <form method='POST' action='signUP' class="formClass" data-parsley-validate>
+                <form method='POST' id="signup_validate" action='signUP' class="formClass" data-parsley-validate>
 
                         <div class="mb-3">
                             @csrf
@@ -30,14 +30,14 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name='password' required data-parsley-minlength="4" data-parsley-trigger="keyup">
+                            <input type="password" class="form-control" id="exampleInputPassword1" name='password' required data-parsley-length="[4,12]" data-parsley-trigger="keyup">
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword2" class="form-label">Confirm Password</label>
                             <input type="password" class="form-control" id="exampleInputPassword2" name='password2' required data-parsley-minlength="4" data-parsley-equalto="#exampleInputPassword1" data-parsley-trigger="keyup">
                         </div>
 
-                        <button type="submit" class="btn btn-primary block">SignUp </button>
+                        <button type="submit" id="submitBtn"  class="btn btn-primary block">Submit </button>
                 </form>
          </div>  
    </div>   

@@ -87,6 +87,7 @@ class user_controller extends Controller
     }
 
     public function signup(Request $req){
+sleep(3);
         $req->validate([
             'name'=>'required',
             'email' => 'required|email|min:5|unique:users',
@@ -97,7 +98,7 @@ class user_controller extends Controller
         $validator = Validator::make($req->all(), [ 'email' => 'required|email', 'password' => 'required',
                                              'name'=>'required'
         ]);
-        
+      
         if($validator->fails()) {
             // $err=$validator->errors();
             
@@ -108,7 +109,7 @@ class user_controller extends Controller
 
             // $req->session()->put($notification);
 
-            return redirect('/signup');
+            // return redirect('/signup');
         }  
 
         // return $req->input();
@@ -124,9 +125,10 @@ class user_controller extends Controller
         //     'message'=>'You have successfully Signed up.'
         // ];
         // $req->session()->put($notification);
-            $req->session()->flash('alert-type','success');
-            $req->session()->flash( 'message','You have successfully Signed up.');
-      return redirect('/');
+            // $req->session()->flash('alert-type','success');
+            // $req->session()->flash( 'message','You have successfully Signed up.');
+    //   return redirect('/');
+    return "success";
 
     }
 }
