@@ -23,13 +23,13 @@
     </div>
    
     <div class="carousel-indicators">
-    <?php $count=0; ?>
-  
-    @foreach($products as $product)
-     
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$count}}" class="{{$count==0?'active':''}}" aria-current="true" ></button>
-    <?php $count+=1; ?> 
-    @endforeach
+      <?php $count=0; ?>
+    
+      @foreach($products as $product)
+      
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{$count}}" class="{{$count==0?'active':''}}" aria-current="true" ></button>
+      <?php $count+=1; ?> 
+      @endforeach
     </div>
   
 

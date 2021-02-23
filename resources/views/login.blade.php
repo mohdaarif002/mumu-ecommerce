@@ -18,16 +18,16 @@
   <div class="row formWrapper">
       <div class="col-sm-6 col-md-4">
           <h3 class="headingClass">Login Page</h3>
-          <form method='POST' action='login' class="formClass">
+          <form method='POST' action='login' class="formClass" data-parsley-validate>
             <div class="mb-3">
             @csrf
               <label for="exampleInputEmail1" class="form-label">Email Id</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" name='email' aria-describedby="emailHelp">
+              <input type="email" class="form-control" id="exampleInputEmail1" name='email' aria-describedby="emailHelp" required data-parsley-type="email" data-parsley-trigger="keyup">
           
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" name='password' >
+              <input type="password" class="form-control" id="exampleInputPassword1" name='password' required data-parsley-minlength="4" >
             </div>
 
             <button type="submit" class="btn btn-primary block">Login </button>
